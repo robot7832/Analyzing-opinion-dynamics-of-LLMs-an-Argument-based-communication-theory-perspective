@@ -1,0 +1,86 @@
+{
+  "01_numerical_opinion": {
+    "A_gc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite",
+      "claude-sonnet-4"
+    ],
+    "A_-6": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_gc+": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_cc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite",
+      "claude-sonnet-4"
+    ]
+  },
+  "02_sending": {
+    "A_gc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_-6": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_gc+": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_cc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite",
+      "claude-sonnet-4"
+    ]
+  },
+  "03_receiving": {
+    "A_gc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_-6": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_gc+": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_cc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite",
+      "claude-sonnet-4"
+    ]
+  },
+  "04_epistemic_networks": {
+    "A_gc": [
+      "gpt-4.1"
+    ]
+  },
+  "05_networked_simulations": {
+    "A_gc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_-6": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite"
+    ],
+    "A_cc": [
+      "gpt-4.1",
+      "gemini-2.5-flash-lite",
+      "claude-sonnet-4"
+    ]
+  },
+  "06_semantic_independence": {
+    "A_gc": [],
+    "A_-6": [],
+    "A_gc+": [],
+    "A_cc": []
+  }
+}

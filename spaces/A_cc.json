@@ -1,0 +1,29 @@
+{
+  "space": "A_cc",
+  "statement": "Restaurants should be required to display calorie counts on their menus",
+  "n": 10,
+  "valence": [
+    "pro",
+    "pro",
+    "pro",
+    "pro",
+    "pro",
+    "con",
+    "con",
+    "con",
+    "con",
+    "con"
+  ],
+  "arguments": [
+    "Mandatory calorie disclosure empowers consumers to make informed dietary choices and better manage their daily caloric intake, supporting personal health goals and weight management.",
+    "Calorie labeling can help reduce healthcare costs by encouraging healthier food choices, potentially decreasing obesity-related diseases like diabetes, heart disease, and metabolic disorders.",
+    "Transparency in nutritional information creates market accountability, forcing restaurants to consider the health impact of their offerings and potentially reformulate recipes to be more nutritious.",
+    "Calorie counts provide essential information for people with specific medical conditions like diabetes who need to carefully monitor their food intake for health management.",
+    "Standardized calorie disclosure creates a level playing field where all restaurants provide the same type of consumer information, enabling fair comparison across different dining establishments.",
+    "Mandating calorie displays imposes significant compliance costs on restaurants, particularly small businesses, including expenses for nutritional analysis, menu redesign, staff training, and ongoing regulatory compliance.",
+    "Calorie counting can trigger or worsen eating disorders in vulnerable individuals by promoting obsessive food monitoring and anxiety around eating, potentially causing psychological harm.",
+    "The requirement represents government overreach into private business operations, limiting restaurants' freedom to design their menus and marketing materials as they see fit.",
+    "Calorie information alone provides incomplete nutritional guidance, as it ignores important factors like vitamin content, food quality, preparation methods, and overall nutritional balance.",
+    "Implementation creates practical challenges including menu space limitations, constant updates for seasonal items and specials, and potential inaccuracies in calorie calculations that could mislead consumers."
+  ]
+}

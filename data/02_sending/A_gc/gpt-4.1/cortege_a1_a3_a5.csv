@@ -1,0 +1,7 @@
+,sentiment,group,argument,human,llm,unknown
+0,negative,"('a_5', 'a_3', 'a_1')",a_1,0.02,0.04,0.7
+1,negative,"('a_5', 'a_3', 'a_1')",a_3,0.2,0.2,0.0
+2,negative,"('a_5', 'a_3', 'a_1')",a_5,0.78,0.76,0.3
+3,positive,"('a_5', 'a_3', 'a_1')",a_1,0.2,0.22,0.7
+4,positive,"('a_5', 'a_3', 'a_1')",a_3,0.4,0.56,0.0
+5,positive,"('a_5', 'a_3', 'a_1')",a_5,0.4,0.22,0.3

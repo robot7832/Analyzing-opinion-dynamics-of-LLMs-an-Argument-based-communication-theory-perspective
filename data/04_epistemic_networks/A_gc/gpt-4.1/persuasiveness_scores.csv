@@ -1,0 +1,8 @@
+,subject,gpt_pro1,gpt_pro2,gpt_pro3,gpt_pro4,gpt_pro5,gpt_con1,gpt_con2,gpt_con3,gpt_con4,gpt_con5,sonnet_pro1,sonnet_pro2,sonnet_pro3,sonnet_pro4,sonnet_pro5,sonnet_con1,sonnet_con2,sonnet_con3,sonnet_con4,sonnet_con5,devstral_pro1,devstral_pro2,devstral_pro3,devstral_pro4,devstral_pro5,devstral_con1,devstral_con2,devstral_con3,devstral_con4,devstral_con5
+0,anthropic/claude-sonnet-4,5,4,4,5,4,5,5,5,5,4,6,4,4,5,5,4,5,6,5,4,5,5,3,4,4,5,5,5,5,5
+1,openai/gpt-4.1,4,4,3,5,3,6,6,6,6,5,5,5,5,6,6,6,5,6,6,4,5,4,3,3,5,6,5,5,4,5
+2,mistralai/devstral-medium,6,6,6,5,6,6,7,5,6,6,6,6,5,5,6,6,6,6,6,6,6,6,5,6,6,6,6,6,6,6
+3,human_1,0,0,0,0,0,0,0,0,0,0,5,5,2,6,7,7,6,3,4,6,0,0,0,0,0,0,0,0,0,0
+4,human_2,0,0,0,0,0,0,0,0,0,0,6,4,4,7,3,3,1,7,6,3,0,0,0,0,0,0,0,0,0,0
+5,human_3,0,0,0,0,0,0,0,0,0,0,2,1,2,7,2,3,5,4,7,4,0,0,0,0,0,0,0,0,0,0
+6,human_4,0,0,0,0,0,0,0,0,0,0,6,5,4,3,3,7,6,4,5,5,0,0,0,0,0,0,0,0,0,0

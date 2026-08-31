@@ -1,0 +1,9 @@
+comparison,test,mean_A,mean_B,delta,n_A,n_B,stat,p,n_slots,p_two_sided,p_one_sided_BgtA,n_perm,MWU_p,Welch_t,Welch_p,boot95_lo,boot95_hi
+1_paper(indep) vs 2_without_indep,naive_pairwise_MWU(WRONG),1.3209408521652222,1.5123683214187622,0.19142746925354004,45.0,45.0,783.0,0.06350085132058028,,,,,,,,,
+1_paper(indep) vs 2_without_indep,paired_slot_wilcoxon(literal),,,0.1914273351430893,,,286.5,0.014946605908081303,45.0,,,,,,,,
+1_paper(indep) vs 2_without_indep,argument_permutation(PRIMARY),,,0.19142746925354004,,,,,,0.2601347973040539,0.13131737365252694,50000.0,,,,,
+1_paper(indep) vs 2_without_indep,argument_mean_reduction(ROBUST),1.3209407329559326,1.5123679637908936,0.19142723083496094,10.0,10.0,,,,,,,0.014019277113959951,-2.607624569574111,0.017830215227667708,0.05748517513275146,0.3296758234500885
+1_paper(indep) vs 4_synonym_by_stance,naive_pairwise_MWU(WRONG),1.3209408521652222,2.049708843231201,0.728767991065979,45.0,45.0,737.0,0.025977523753150898,,,,,,,,,
+1_paper(indep) vs 4_synonym_by_stance,paired_slot_wilcoxon(literal),,,0.728767991065979,,,139.0,0.00015819610465997902,45.0,,,,,,,,
+1_paper(indep) vs 4_synonym_by_stance,argument_permutation(PRIMARY),,,0.728767991065979,,,,,,0.0022999540009199814,0.0012399752004959902,50000.0,,,,,
+1_paper(indep) vs 4_synonym_by_stance,argument_mean_reduction(ROBUST),1.3209407329559326,2.049708843231201,0.7287681102752686,10.0,10.0,,,,,,,0.00018267179110955002,-11.800660467964363,6.871366182088327e-09,0.6188198894262313,0.8468504518270491

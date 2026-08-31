@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+*.key
+.DS_Store
+# raw simulation pickles are regenerated locally; they exceed the file-size limit
+data/05_networked_simulations/**/*.pkl

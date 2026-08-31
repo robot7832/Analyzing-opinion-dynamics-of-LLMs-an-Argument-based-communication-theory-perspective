@@ -1,0 +1,29 @@
+{
+  "space": "A_gc",
+  "statement": "People should have a right to keep and bear arms",
+  "n": 10,
+  "valence": [
+    "pro",
+    "pro",
+    "pro",
+    "pro",
+    "pro",
+    "con",
+    "con",
+    "con",
+    "con",
+    "con"
+  ],
+  "arguments": [
+    "Individuals have a fundamental right to protect themselves, their families, and their property from immediate threats when law enforcement cannot arrive in time.",
+    "The Second Amendment explicitly protects this right as part of the foundational legal framework, and constitutional rights should be preserved regardless of contemporary policy preferences.",
+    "An armed citizenry serves as a check against potential government overreach and protects democratic institutions from authoritarian drift.",
+    "People in remote areas often require firearms for protection against wildlife, pest control, and situations where emergency services are hours away.",
+    "Firearms allow physically weaker individuals to defend themselves against stronger attackers, providing equal protection regardless of physical capabilities.",
+    "Countries with stricter gun laws consistently show lower rates of gun violence, homicides, and mass shootings, demonstrating that restrictions save lives.",
+    "Widespread gun ownership leads to preventable deaths through accidents, particularly involving children who access improperly stored weapons.",
+    "Easy access to firearms significantly increases successful suicide attempts, as guns provide a highly lethal means during moments of crisis.",
+    "Firearms in homes increase the likelihood that domestic disputes will result in fatalities, particularly endangering women in abusive relationships.",
+    "The original intent of armed militias is obsolete given professional military and police forces, making civilian gun ownership an outdated concept that no longer serves its historical purpose."
+  ]
+}
