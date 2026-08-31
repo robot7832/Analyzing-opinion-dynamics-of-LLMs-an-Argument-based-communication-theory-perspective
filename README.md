@@ -91,6 +91,10 @@ tree stays readable and the data can be inspected without reading any code. Figu
 |   |   |-- A_-6/
 |   |   |   |-- gemini-2.5-flash-lite/   (2 files)
 |   |   |   `-- gpt-4.1/   (2 files)
+|   |   |-- A_cc/
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc/
 |   |       |-- gemini-2.5-flash-lite/   (2 files)
 |   |       `-- gpt-4.1/   (2 files)
@@ -190,72 +194,79 @@ tree stays readable and the data can be inspected without reading any code. Figu
 |-- figures/
 |   |-- 01_numerical_opinion/
 |   |   |-- A_-6/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_cc/
-|   |   |   |-- claude-sonnet-4/   (0 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_gc/
-|   |   |   |-- claude-sonnet-4/   (0 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc+/
-|   |       |-- gemini-2.5-flash-lite/   (0 files)
-|   |       `-- gpt-4.1/   (0 files)
+|   |       |-- gemini-2.5-flash-lite/   (1 files)
+|   |       `-- gpt-4.1/   (1 files)
 |   |-- 02_sending/
 |   |   |-- A_-6/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_cc/
-|   |   |   |-- claude-sonnet-4/   (0 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_gc/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc+/
-|   |       |-- gemini-2.5-flash-lite/   (0 files)
-|   |       `-- gpt-4.1/   (0 files)
+|   |       |-- gemini-2.5-flash-lite/   (1 files)
+|   |       `-- gpt-4.1/   (1 files)
 |   |-- 03_receiving/
 |   |   |-- A_-6/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_cc/
-|   |   |   |-- claude-sonnet-4/   (0 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_gc/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc+/
-|   |       |-- gemini-2.5-flash-lite/   (0 files)
-|   |       `-- gpt-4.1/   (0 files)
+|   |       |-- gemini-2.5-flash-lite/   (1 files)
+|   |       `-- gpt-4.1/   (1 files)
 |   |-- 04_epistemic_networks/
 |   |   `-- A_gc/
-|   |       `-- gpt-4.1/   (0 files)
+|   |       `-- gpt-4.1/   (1 files)
 |   |-- 05_networked_simulations/
 |   |   |-- A_-6/
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   |-- A_cc/
-|   |   |   |-- claude-sonnet-4/   (0 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (0 files)
-|   |   |   `-- gpt-4.1/   (0 files)
+|   |   |   |-- claude-sonnet-4/   (1 files)
+|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
+|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc/
-|   |       |-- gemini-2.5-flash-lite/   (0 files)
-|   |       `-- gpt-4.1/   (0 files)
+|   |       |-- gemini-2.5-flash-lite/   (1 files)
+|   |       `-- gpt-4.1/   (1 files)
 |   `-- 06_semantic_independence/
 |       |-- A_-6/
+|       |   `-- .gitkeep
 |       |-- A_cc/
+|       |   `-- .gitkeep
 |       |-- A_gc/
+|       |   `-- .gitkeep
 |       `-- A_gc+/
+|           `-- .gitkeep
 |-- spaces/
 |   |-- A_-6.json
 |   |-- A_cc.json
 |   |-- A_gc+.json
 |   `-- A_gc.json
-`-- coverage.json
+|-- .gitignore
+|-- README.md
+|-- coverage.json
+`-- requirements.txt
 ```
 
 ## Running
@@ -284,6 +295,69 @@ python run.py --collect
 All model queries use temperature 1. Note that 1 is the maximum the Anthropic API accepts, while
 for the OpenAI and Google models it is the default and half of their maximum, so the nominal value
 is not the same sampling regime across model families.
+
+## Opinion dynamics: how the simulations work and what the stored arrays mean
+
+`05_networked_simulations` is the only experiment where the models do not answer a question about a
+fixed argument set — they talk to each other and the sets change.
+
+**One run.** `N` agents sit on a fixed graph. Each agent starts with a set of arguments drawn by a
+Bernoulli scheme: the first half of the agents (Group 1) draw each pro argument with probability 0.5
+and each con argument with probability 0.1, the second half (Group 2) the other way round, which
+makes the two groups start on opposite sides. At every step one agent is picked at random, chooses
+*one* argument from its own set to send, and a random neighbour decides whether to adopt it. Both
+decisions are the model's: the sender is given the sending prompt of `02_sending`, the receiver the
+acceptance prompt of `03_receiving`. Only the receiver's set changes, so a single communication is
+one-directional; roles are redrawn every step, so over a run a pair exchanges in both directions.
+A run is 500 accepted-or-rejected communications.
+
+**Two factors, crossed.** *Topology* — Topology 1 is a two-cluster stochastic block model (in-group
+edge probability 0.5, between-group 0.1); Topology 2 is an Erdos-Renyi graph with the same edge
+count, so the two differ in modularity, not in density. *Insertion protocol* — an adopted argument
+is appended to the end of the receiver's set, or inserted at its beginning. The protocol matters
+because agents read their arguments in order, so it decides which argument sits in first position.
+
+**The opinion is computed, never queried.** No agent is ever asked for a number during a run. An
+agent's opinion is the mean of the regression weights of the arguments it currently holds,
+`o_i = (1 / |S_i|) * sum over l in S_i of alpha_l`, with `alpha` taken from the model-(5) regression
+fitted to *that same model on that same space* in `01_numerical_opinion`. This matters when reading
+the figures: a trajectory is the behaviour of one model read through the ruler of one model, and the
+ruler is a choice. Changing whose `alpha` is used shifts the levels of the curves substantially while
+leaving their shape and the ordering of the models intact, so level comparisons across models are
+only meaningful once the same `alpha` is used for all of them.
+
+**The classical baseline.** Every LLM run is paired with a run of formal ACT agents on the same
+graph and the same initial endowment, differing only in the decision rules: a classical sender picks
+uniformly at random, and a classical receiver accepts with probability `sigma(beta * delta C)`, where
+`delta C` is the change in coherence and `beta` is fitted to that model's own acceptance data in
+`03_receiving`. The pair shares its seed, so at step 0 the two arms are identical and any divergence
+is caused by the decision rules alone. Note that an argument the receiver already holds is not put
+to the model at all — it is moved to the recency end of the set — so the diagonal of an acceptance
+matrix never enters the dynamics.
+
+**Agents may start empty.** With these probabilities a few agents draw no arguments at all. Such an
+agent can still accept, but cannot send: its turn is skipped and not counted towards the 500.
+
+**What is in `s9_agg.npz`.** The raw per-step histories are far too large to ship (see below), so
+each leaf stores the aggregate that the figures actually read. Keys are strings:
+
+- `<protocol>|topo<0|1>|<llm|cl>|g<1|2>_mean` — the group-mean opinion trajectory, averaged over
+  runs, where `cl` is the classical arm;
+- `... |g<1|2>_ci` — the half-width of the 95 % confidence interval of that mean across runs (a
+  confidence interval, not a standard deviation: at n = 30 the two differ by a factor of about 2.7);
+- `argdist|<protocol>|topo<0|1>|<llm|cl>` — a (time window x n arguments) table with the percentage
+  share of each argument among the transmissions in that window, averaged over runs;
+- `n_runs`, `N`, `window`, `note` — how many matched runs the aggregate covers, the number of
+  agents, the window length in iterations, and a short provenance string.
+
+One window equals one communication per agent, so it is 20 iterations at `N = 20` and 100 at
+`N = 100`. The gun-topic collections use `N = 20` for `gpt-4.1` and `N = 100` for
+`gemini-2.5-flash-lite`; the calorie collections use `N = 20` throughout. Entropies and other
+sample-size-sensitive statistics are therefore not comparable across collections unless the
+estimator's sample size is equalised first.
+
+Only runs present in *both* arms are aggregated, so an LLM run whose classical partner is missing is
+dropped rather than compared against nothing.
 
 ## What is in `data/`
 
@@ -322,9 +396,9 @@ is not the same sampling regime across model families.
 | 05_networked_simulations | `A_gc` | `gemini-2.5-flash-lite` | fig10.npz · s9_agg.npz |
 | 05_networked_simulations | `A_-6` | `gpt-4.1` | fig10.npz · s9_agg.npz |
 | 05_networked_simulations | `A_-6` | `gemini-2.5-flash-lite` | fig10.npz · s9_agg.npz |
-| 05_networked_simulations | `A_cc` | `gpt-4.1` | - |
-| 05_networked_simulations | `A_cc` | `gemini-2.5-flash-lite` | - |
-| 05_networked_simulations | `A_cc` | `claude-sonnet-4` | - |
+| 05_networked_simulations | `A_cc` | `gpt-4.1` | s9_agg.npz |
+| 05_networked_simulations | `A_cc` | `gemini-2.5-flash-lite` | s9_agg.npz |
+| 05_networked_simulations | `A_cc` | `claude-sonnet-4` | s9_agg.npz |
 | 06_semantic_independence | `A_gc` | n/a | independence_test_results.csv · pairwise_calibrated_sts.csv |
 | 06_semantic_independence | `A_-6` | n/a | - |
 | 06_semantic_independence | `A_gc+` | n/a | - |
@@ -369,4 +443,4 @@ receiving and simulation leaves do not exist for that space. `A_gc+` has no netw
 
 ## Scale
 
-60 Python files, 73 CSV tables, 8 compressed arrays, 3 MB in total.
+60 Python files, 73 CSV tables, 11 compressed arrays, 5 MB in total.
