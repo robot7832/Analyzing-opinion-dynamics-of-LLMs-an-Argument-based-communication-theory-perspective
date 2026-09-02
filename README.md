@@ -270,32 +270,131 @@ tree stays readable and the data can be inspected without reading any code. Figu
 `-- requirements.txt
 ```
 
-## Running
+## How to use
 
-Nothing needs to be installed beyond the requirements:
+### Install
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Every leaf is self-contained. Rebuilding a figure from the stored data needs no key and no network:
+Everything except the semantic-independence experiment runs on those packages alone. That one
+additionally needs `sentence-transformers` and downloads two encoders on first use.
+
+### The two steps
+
+Every experiment is split in two, and the split is the thing to understand before running anything:
+
+- **`collect*.py` queries the models.** It needs `OPENROUTER_API_KEY` in the environment, it needs
+  network access, and it **costs money**. It writes into `data/`.
+- **`plot_*.py`, `analyse.py`, `fit_beta.py` and `reconstruct.py` read what is already in `data/`.**
+  They need no key, no network and no money. They write into `figures/` or print to the terminal.
+
+Everything in `data/` is already collected, so every figure and every number in the paper can be
+rebuilt without spending anything. Re-collection is only needed to extend the study to a new model,
+a new space, or a larger number of trials.
+
+Each leaf carries a `run.py` that wires its own space and model into the experiment's scripts:
 
 ```bash
 cd experiments/01_numerical_opinion/A_gc/gpt-4.1
-python run.py --plot
+python run.py --plot                 # free
+python run.py --collect              # queries the model, COSTS MONEY
 ```
 
-Re-collecting the data queries the model and **costs money**:
+The experiment-level scripts can also be called directly, which is what you want when you need
+flags the leaf runner does not pass through:
 
 ```bash
-export OPENROUTER_API_KEY="..."      # never stored in the repository
-cd experiments/01_numerical_opinion/A_gc/gpt-4.1
-python run.py --collect
+cd experiments/01_numerical_opinion
+python collect_order.py --space A_gc --model openai/gpt-4.1 --trials 30 --only t4
 ```
 
-All model queries use temperature 1. Note that 1 is the maximum the Anthropic API accepts, while
-for the OpenAI and Google models it is the default and half of their maximum, so the nominal value
-is not the same sampling regime across model families.
+### Which script does what
+
+| experiment | what it measures | generation | reading and plotting |
+|---|---|---|---|
+| `01_numerical_opinion` | the opinion a model reports for every subset of the space, and how much the order of the arguments moves it | `collect.py` (all subsets), `collect_order.py` (the order experiments) | `plot_regression.py` (the weight estimates), `plot_order_tables.py` (order tables and their LaTeX) |
+| `02_sending` | which argument a model chooses to send, and whether that choice depends on the partner and on the order of its own set | `collect.py` (four corteges x three partner settings), `collect_pair.py` (the two-argument contrast), `collect_permuted.py` where present | `plot_cortege_ci.py` (frequencies with Wilson intervals), `analyse.py` |
+| `03_receiving` | whether a model adopts an incoming argument, as a function of what it already holds | `collect.py` (every ordered pair of arguments x three settings) | `plot_acceptance_heatmap.py` (the acceptance atlases), `fit_beta.py` (the biased-processing coefficient) |
+| `04_epistemic_networks` | how persuasive each argument is on its own, rated by several models and by human raters | `collect.py` | `plot_persuasiveness.py`, `analyse.py` |
+| `05_networked_simulations` | what happens when the agents talk to each other on a network | `simulate.py` (the runs), `aggregate.py` (raw runs to aggregates) | `reconstruct.py` (full per-agent dynamics), `plot_opinion_dynamics.py`, `plot_topologies.py` |
+| `06_semantic_independence` | how distinct the arguments of a space are from each other | `encode.py` | `plot_similarity.py`, `analyse.py` |
+
+### Worked examples
+
+Rebuild the weight estimates of one model on one space, and the order tables that go with them:
+
+```bash
+cd experiments/01_numerical_opinion
+python plot_regression.py --space A_gc --model gpt-4.1
+python plot_order_tables.py                      # prints the table and its LaTeX
+```
+
+Rebuild the sending figure for a permuted cortege, solid for the original order and dashed for the
+permuted one:
+
+```bash
+cd experiments/02_sending
+python plot_cortege_ci.py --model claude          # or gpt, gemini
+```
+
+Rebuild the acceptance atlases and refit the biased-processing coefficient:
+
+```bash
+cd experiments/03_receiving
+python plot_acceptance_heatmap.py
+python fit_beta.py --space A_gc --model gpt-4.1
+```
+
+Read the simulations. This is the entry point for anything the aggregates do not already answer,
+because it returns the opinion of every agent at every step rather than group means:
+
+```bash
+cd experiments/05_networked_simulations
+python reconstruct.py --space A_gc --model gpt-4.1 --protocol insert-to-end --topology 2
+python reconstruct.py --space A_cc --model claude-sonnet-4 --run 0    # first steps of one run
+```
+
+```python
+import reconstruct as R
+z = R.load("A_gc", "gpt-4.1")
+op = R.opinions(z, "insert-to-end", 1, alpha)   # (runs, steps, agents)
+g1, g2 = R.group_means(op)
+```
+
+Redraw the opinion trajectories and the two topologies:
+
+```bash
+cd experiments/05_networked_simulations
+python plot_opinion_dynamics.py --space A_gc --model gpt-4.1
+python plot_topologies.py
+```
+
+Re-run the simulations themselves, which is the one expensive step here — a full cell is 500
+model-driven communications per run:
+
+```bash
+export OPENROUTER_API_KEY="..."
+cd experiments/05_networked_simulations
+python simulate.py --space A_gc --model openai/gpt-4.1 --exps 5 --iters 500
+python aggregate.py                              # raw runs -> s9_agg.npz
+```
+
+### Things that apply everywhere
+
+- **Temperature is 1 in every query.** Note that 1 is the maximum the Anthropic API accepts, while
+  for the OpenAI and Google models it is the default and half of their maximum, so the same nominal
+  value is not the same sampling regime across model families.
+- **Answers are sampled, not deterministic.** Re-collecting will not reproduce a stored table cell
+  for cell. Where a single reading is unstable, the tables carry a modal or mean value over repeated
+  queries and the per-query readings are kept next to them, so the spread can be inspected rather
+  than guessed at.
+- **Spend deliberately.** The cost of a collection scales with the number of subsets, corteges or
+  simulation steps, and the simulations are by far the most expensive part. Start with a small
+  `--exps` and check the output before launching a full cell.
+- **Not every combination exists.** `coverage.json` lists the (experiment, space, model) triples
+  that were actually collected; the missing leaves are absent rather than empty.
 
 ## Opinion dynamics: how the simulations work and what the stored arrays mean
 
@@ -476,4 +575,4 @@ receiving and simulation leaves do not exist for that space. `A_gc+` has no netw
 
 ## Scale
 
-61 Python files, 73 CSV tables, 18 compressed arrays, 8 MB in total.
+61 Python files, 73 CSV tables, 18 compressed arrays, 12 MB in total.
