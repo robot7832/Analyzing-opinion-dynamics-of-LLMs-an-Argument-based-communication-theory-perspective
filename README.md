@@ -89,15 +89,15 @@ tree stays readable and the data can be inspected without reading any code. Figu
 |   |       `-- gpt-4.1/   (1 files)
 |   |-- 05_networked_simulations/
 |   |   |-- A_-6/
+|   |   |   |-- gemini-2.5-flash-lite/   (3 files)
+|   |   |   `-- gpt-4.1/   (3 files)
+|   |   |-- A_cc/
+|   |   |   |-- claude-sonnet-4/   (2 files)
 |   |   |   |-- gemini-2.5-flash-lite/   (2 files)
 |   |   |   `-- gpt-4.1/   (2 files)
-|   |   |-- A_cc/
-|   |   |   |-- claude-sonnet-4/   (1 files)
-|   |   |   |-- gemini-2.5-flash-lite/   (1 files)
-|   |   |   `-- gpt-4.1/   (1 files)
 |   |   `-- A_gc/
-|   |       |-- gemini-2.5-flash-lite/   (2 files)
-|   |       `-- gpt-4.1/   (2 files)
+|   |       |-- gemini-2.5-flash-lite/   (3 files)
+|   |       `-- gpt-4.1/   (3 files)
 |   `-- 06_semantic_independence/
 |       |-- A_cc/
 |       |   `-- pairwise_calibrated_sts.csv
@@ -179,6 +179,7 @@ tree stays readable and the data can be inspected without reading any code. Figu
 |   |   |-- aggregate.py
 |   |   |-- plot_opinion_dynamics.py
 |   |   |-- plot_topologies.py
+|   |   |-- reconstruct.py
 |   |   `-- simulate.py
 |   `-- 06_semantic_independence/
 |       |-- A_-6/
@@ -338,8 +339,41 @@ matrix never enters the dynamics.
 **Agents may start empty.** With these probabilities a few agents draw no arguments at all. Such an
 agent can still accept, but cannot send: its turn is skipped and not counted towards the 500.
 
-**What is in `s9_agg.npz`.** The raw per-step histories are far too large to ship (see below), so
-each leaf stores the aggregate that the figures actually read. Keys are strings:
+**What is stored, and why it is small.** The simulator's own output keeps, at every step, a snapshot
+of every agent's ordered argument set. Across all collections that is about 2.1 GB, with single
+files past the platform's 100 MB limit. Nearly all of it is redundant: those snapshots are a
+deterministic function of two much smaller things — the ordered initial sets and the communication
+log — once the insertion protocol is known. `runs.npz` stores those two, which is lossless and about
+280 times smaller; `experiments/05_networked_simulations/reconstruct.py` replays the log and returns
+the snapshots and the per-agent opinion trajectories. The reconstruction was checked against the
+original snapshots step for step, ordering included, and the group-mean trajectories it produces
+match the stored aggregates to 3e-16.
+
+`runs.npz` keys, with `<arm>` either `llm` for the model-driven agents or `cl` for their matched
+classical partners:
+
+- `exp_ids` `(n_runs,)` — the experiment id of each run, which is also its random seed offset;
+- `edges|topo<0|1>` `(n_runs, E, 2)` — the graph of each run, an edge list padded with `-1`;
+- `init|<protocol>|topo<0|1>|<arm>` `(n_runs, N, n_args)` — the initial sets as argument indices
+  **in the order the agent holds them**, padded with `-1`. The order matters: it is what the
+  insertion protocol acts on;
+- `log|<protocol>|topo<0|1>|<arm>` `(n_runs, T, 4)` — one row per communication: sender, receiver,
+  verdict, argument index. The verdict is `0` rejected, `1` accepted, `2` the receiver already held
+  it and moved it to the recency end without consulting the model.
+
+Reading one cell:
+
+```bash
+cd experiments/05_networked_simulations
+python reconstruct.py --space A_gc --model gpt-4.1 --protocol insert-to-end --topology 2
+```
+
+which reports the accept/reject/already-held breakdown and how the sets grow, and with `--alpha`
+also the group-mean opinion trajectories. `histories()` and `opinions()` are importable if you want
+the arrays rather than the summary.
+
+**What is in `s9_agg.npz`.** The same runs pre-averaged, which is what the figures read directly.
+Keys are strings:
 
 - `<protocol>|topo<0|1>|<llm|cl>|g<1|2>_mean` — the group-mean opinion trajectory, averaged over
   runs, where `cl` is the classical arm;
@@ -392,13 +426,13 @@ dropped rather than compared against nothing.
 | 03_receiving | `A_cc` | `gemini-2.5-flash-lite` | receiving.csv |
 | 03_receiving | `A_cc` | `claude-sonnet-4` | receiving.csv |
 | 04_epistemic_networks | `A_gc` | `gpt-4.1` | persuasiveness_scores.csv |
-| 05_networked_simulations | `A_gc` | `gpt-4.1` | fig10.npz · s9_agg.npz |
-| 05_networked_simulations | `A_gc` | `gemini-2.5-flash-lite` | fig10.npz · s9_agg.npz |
-| 05_networked_simulations | `A_-6` | `gpt-4.1` | fig10.npz · s9_agg.npz |
-| 05_networked_simulations | `A_-6` | `gemini-2.5-flash-lite` | fig10.npz · s9_agg.npz |
-| 05_networked_simulations | `A_cc` | `gpt-4.1` | s9_agg.npz |
-| 05_networked_simulations | `A_cc` | `gemini-2.5-flash-lite` | s9_agg.npz |
-| 05_networked_simulations | `A_cc` | `claude-sonnet-4` | s9_agg.npz |
+| 05_networked_simulations | `A_gc` | `gpt-4.1` | fig10.npz · runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_gc` | `gemini-2.5-flash-lite` | fig10.npz · runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_-6` | `gpt-4.1` | fig10.npz · runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_-6` | `gemini-2.5-flash-lite` | fig10.npz · runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_cc` | `gpt-4.1` | runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_cc` | `gemini-2.5-flash-lite` | runs.npz · s9_agg.npz |
+| 05_networked_simulations | `A_cc` | `claude-sonnet-4` | runs.npz · s9_agg.npz |
 | 06_semantic_independence | `A_gc` | n/a | independence_test_results.csv · pairwise_calibrated_sts.csv |
 | 06_semantic_independence | `A_-6` | n/a | - |
 | 06_semantic_independence | `A_gc+` | n/a | - |
@@ -418,6 +452,7 @@ File conventions:
   `opp_valence`, `chosen`; `sending_permuted.csv` is the same cortege read in reverse order;
 - `receiving.csv` — one row per decision, the receiver's own argument, the incoming argument, the
   setting and the binary outcome;
+- `runs.npz` — the complete record of every simulation run, losslessly packed (see below);
 - `s9_agg.npz` — the aggregated simulation output every figure of the networked section reads:
   mean group-opinion trajectories with confidence bands, and the per-window distribution of
   transmitted arguments, for each protocol and topology, for LLM and classical agents;
@@ -426,11 +461,9 @@ File conventions:
 
 ## What is deliberately absent
 
-- **Raw simulation pickles.** The full per-step histories of the networked simulations come to
-  about 2.2 GB, and seven single files exceed the platform's 100 MB limit. `data/` therefore keeps
-  the aggregates (`s9_agg.npz`), which is what every figure actually reads, and
-  `experiments/05_networked_simulations/simulate.py` plus `aggregate.py` regenerate the raw
-  histories and the aggregates from scratch.
+- **The simulator's raw pickles.** Not their content — `runs.npz` carries every run losslessly, as
+  explained above — only the redundant per-step snapshots, which `reconstruct.py` rebuilds exactly.
+  `simulate.py` regenerates the pickles from scratch if they are wanted in their original form.
 - **Credentials.** No key is stored anywhere; `OPENROUTER_API_KEY` is read from the environment.
 - **Identifying material.** Author names, affiliations, locations and local filesystem paths were
   removed, and the build refuses to produce this repository if any reappear.
@@ -443,4 +476,4 @@ receiving and simulation leaves do not exist for that space. `A_gc+` has no netw
 
 ## Scale
 
-60 Python files, 73 CSV tables, 11 compressed arrays, 5 MB in total.
+61 Python files, 73 CSV tables, 18 compressed arrays, 8 MB in total.
